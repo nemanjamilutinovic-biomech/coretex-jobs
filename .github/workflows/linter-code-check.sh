@@ -1,7 +1,8 @@
 #!/bin/bash
 
 eval "$(conda shell.bash hook)"
-dir = $1
+dir=$1
+echo "DIR is = $dir"
 # for dir in tasks/* ; do
 echo "Checking directory: $dir"
 
