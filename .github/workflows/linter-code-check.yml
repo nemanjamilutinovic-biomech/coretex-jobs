@@ -1,0 +1,30 @@
+name: Linter code check
+
+on:
+  push:
+    branches:
+      - main
+      - stage
+      - develop
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches:
+      - main
+      - stage
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+      - name: Install mypy globally
+        run: |
+          pip install mypy
+      - name: Analysing templates with mypy
+        run: |
+          bash .github/workflows/linter-code-check.sh
