@@ -28,8 +28,7 @@ jobs:
   "tasks/bio-region-seperation", "tasks/object-detection-yolov10", "tasks/r-experiment",
   "tasks/bio-sequence-alignment", "tasks/object-detection-yolov8", "tasks/r-phylogenetic-tree", "tasks/ollama-chatbot-fn", "tasks/s3-model-upload",
   "tasks/contextual-targeting", "tasks/ollama-rag-index", "tasks/sql-connector",
-  "tasks/dataset-merge", "tasks/ollama-sentiment-analysis-fn", "tasks/stable-diffusion",
-  "tasks/dataset-split", "tasks/qiime-alpha-beta-diversity", "tasks/stable-diffusion-fn",
+  "tasks/dataset-merge", "tasks/ollama-sentiment-analysis-fn", "tasks/stable-diffusion", "tasks/qiime-alpha-beta-diversity", "tasks/stable-diffusion-fn",
   "tasks/image-augmentation", "tasks/qiime-dada2", "tasks/synthetic-image-generator",
   "tasks/image-extractor", "tasks/qiime-demultiplexing", "tasks/tabular-data-diagnostics",
   "tasks/image-orientation", "tasks/qiime-import", "tasks/translation-ollama"
