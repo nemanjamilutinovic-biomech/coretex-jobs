@@ -9,7 +9,7 @@ for dir in tasks/* ; do
     echo "No .mypy.ini file found in $dir, skipping..."
     continue
   fi
-
+  date1=$(date +"%s")
   if [ -f "$dir/environment.yml" ]; then
     echo "Setting up conda environment for $dir"
     conda env create -n $(basename "$dir") -f "$dir/environment.yml"
@@ -42,4 +42,7 @@ for dir in tasks/* ; do
     deactivate
     rm -rf "$dir/venv"
   fi
+date2=$(date +"%s")
+DIFF=$(($date2-$date1))
+echo "Duration in $dir: $(($DIFF / 3600 )) hours $((($DIFF % 3600) / 60)) minutes $(($DIFF % 60)) seconds"
 done
