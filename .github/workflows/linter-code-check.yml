@@ -16,6 +16,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dirs: [tasks/bio-bodysite-prediction, tasks/bio-bodysite-prediction-nn, tasks/bio-primer-removal]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -27,4 +30,4 @@ jobs:
           pip install mypy
       - name: Analysing templates with mypy
         run: |
-          bash .github/workflows/linter-code-check.sh
+          bash .github/workflows/linter-code-check.sh ${{matrix.dirs}}
