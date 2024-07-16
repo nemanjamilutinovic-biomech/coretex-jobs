@@ -23,6 +23,7 @@ jobs:
       - name: Define Dirs
         id: dirs
         run: directories=($(ls -d tasks/*/)) && result=$(echo $directories | sed 's/ /, /g') &&
+        echo [$result] &&
          echo 'dirs=[$result]' >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
