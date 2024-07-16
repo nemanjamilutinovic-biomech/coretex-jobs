@@ -7,7 +7,7 @@ echo "DIR is = $dir"
 echo "Checking directory: $dir"
 
 # Skip the tasks/dataset-split directory
-if [ "$dir" == "tasks/dataset-split" ]; then
+if [ "$dir" == "tasks/dataset-split/" ]; then
   exit 0;
 fi
 # Skip the directory if no .mypy.ini file is found
