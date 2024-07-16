@@ -22,7 +22,10 @@ if [ -f "$dir/environment.yml" ]; then
 elif [ -f "$dir/requirements.txt" ]; then
   echo "Setting up venv for $dir"
   python3.9 -m venv "$dir/venv"
+  echo "activate venv"
   source "$dir/venv/bin/activate"
+  echo "install requirements"
+  pip install --upgrade pip
   pip install -r "$dir/requirements.txt"
   pip install mypy
 fi
