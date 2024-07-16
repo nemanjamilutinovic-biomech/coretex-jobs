@@ -32,6 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Cache setups and dependecy
+        id: cache-npm
         uses: actions/cache@v3
         env:
           cache-name: cache-project-dependencies
@@ -52,3 +53,7 @@ jobs:
       - name: Analysing templates with mypy
         run: |
           bash .github/workflows/linter-code-check.sh ${{matrix.dirs}}
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: List cached
+        continue-on-error: true
+        run: echo LISTED && ls -d ~/.coretex-jobs-setup/*/
