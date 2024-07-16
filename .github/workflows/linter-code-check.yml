@@ -23,8 +23,7 @@ jobs:
         run: ls 
       - name: Define Dirs
         id: dirs
-        run: |
-            echo 'dirs=["tasks/annotated-image-extractor"]' >> "$GITHUB_OUTPUT"
+        run: echo 'dirs=["tasks/annotated-image-extractor"]' >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
     needs: define-dirs
