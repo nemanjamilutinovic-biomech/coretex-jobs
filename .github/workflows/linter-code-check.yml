@@ -17,11 +17,12 @@ jobs:
   define-dirs:
     runs-on: ubuntu-latest
     outputs:
-      dirs: ${{ steps.dirs.outputs }}
+      dirs: ${{ steps.dirs.outputs.dirs }}
     steps:
       - name: Define Dirs
         id: dirs
         run: |
+          pwd &&
           ls -d tasks/*/ >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
