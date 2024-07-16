@@ -27,11 +27,21 @@ jobs:
     runs-on: ubuntu-latest
     needs: define-dirs
     strategy:
-      max-parallel: 50
       matrix:
         dirs: ${{ fromJSON(needs.define-dirs.outputs.dirs) }}
     steps:
       - uses: actions/checkout@v3
+      - name: Cache setups and dependecy
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-project-dependencies
+        with:
+          path: ~/.coretex-jobs-setup
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-coretex-jobs
+          restore-keys: |
+            ${{runner.os}}-build-${{env.cache-name}}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
