@@ -23,12 +23,12 @@ jobs:
         id: dirs
         run: |
           ls  &&
-            echo '["tasks/annotated-image-extractor", "tasks/image-quality-predictor", "tasks/qiime-otu-clustering"]' >> "$GITHUB_OUTPUT"
+            echo 'dirs=["tasks/annotated-image-extractor", "tasks/image-quality-predictor", "tasks/qiime-otu-clustering"]' >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dirs: ${{ fromJSON(needs.define-dirs.outputs) }}
+        dirs: ${{ fromJSON(needs.define-dirs.outputs.dirs) }}
 #         [
 #   "tasks/annotated-image-extractor", "tasks/image-quality-predictor", "tasks/qiime-otu-clustering",
 #   "tasks/audio-analytics", "tasks/image-segmentation", "tasks/qiime-taxonomic-analysis",
