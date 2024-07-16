@@ -14,20 +14,20 @@ on:
       - develop
 
 jobs:
-  # define-dirs:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     dirs: ${{ steps.dirs.outputs.dirs }}
-  #   steps:
-  #     - name: Define Dirs
-  #       id: dirs
-  #       run: |
-  #         echo 'colors=["red", "green", "blue"]' >> "$GITHUB_OUTPUT"
+  define-dirs:
+    runs-on: ubuntu-latest
+    outputs:
+      dirs: ${{ steps.dirs.outputs }}
+    steps:
+      - name: Define Dirs
+        id: dirs
+        run: |
+          ls -d tasks/*/ >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dirs: ["tasks/image-orientation"]
+        dirs: ${{ fromJSON(needs.define-dirs.outputs) }}
 #         [
 #   "tasks/annotated-image-extractor", "tasks/image-quality-predictor", "tasks/qiime-otu-clustering",
 #   "tasks/audio-analytics", "tasks/image-segmentation", "tasks/qiime-taxonomic-analysis",

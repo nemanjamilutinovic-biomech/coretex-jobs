@@ -1,6 +1,5 @@
 #!/bin/bash
-echo "pwd"
-pwd
+
 eval "$(conda shell.bash hook)"
 dir=$1
 echo "DIR is = $dir"
@@ -21,10 +20,7 @@ if [ -f "$dir/environment.yml" ]; then
   conda activate $(basename "$dir")
   pip install mypy
 elif [ -f "$dir/requirements.txt" ]; then
-  echo "pwd"
-  pwd
   echo "Setting up venv for $dir"
-  ls -la
   python3.9 -m venv "$dir/venv"
   echo "activate venv"
   source "$dir/venv/bin/activate"
@@ -38,8 +34,7 @@ echo "Running mypy in $dir"
 set +e  # Disable exit on error
 mypy_output=$(mypy --config-file "$dir/.mypy.ini" "$dir" 2>&1)
 set -e  # Re-enable exit on error
-echo "pwd"
-pwd
+
 echo "$mypy_output"
 if echo "$mypy_output" | grep -q 'error:'; then
   echo "Running install-types in $dir"
