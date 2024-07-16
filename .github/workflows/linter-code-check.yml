@@ -20,7 +20,7 @@ jobs:
       dirs: ${{ steps.dirs.outputs.dirs }}
     steps:
       - name: list directory
-        run: ls 
+        run: pwd && ls -la
       - name: Define Dirs
         id: dirs
         run: echo 'dirs=["tasks/annotated-image-extractor"]' >> "$GITHUB_OUTPUT"
