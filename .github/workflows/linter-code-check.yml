@@ -26,6 +26,7 @@ jobs:
             echo 'dirs=["tasks/annotated-image-extractor", "tasks/image-quality-predictor", "tasks/qiime-otu-clustering"]' >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
+    needs: define-dirs
     strategy:
       matrix:
         dirs: ${{ fromJSON(needs.define-dirs.outputs.dirs) }}
