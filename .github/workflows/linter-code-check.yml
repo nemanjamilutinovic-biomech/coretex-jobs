@@ -27,6 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: define-dirs
     strategy:
+      max-parallel: 50
       matrix:
         dirs: ${{ fromJSON(needs.define-dirs.outputs.dirs) }}
     steps:
