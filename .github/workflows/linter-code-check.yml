@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Define Dirs
         id: dirs
-        run: directories=($(ls -d tasks/*/)) && echo $directories && result=$(echo $directories | sed 's/ /, /g') &&
+        run: ls -l && directories=($(ls -d tasks/*/)) && echo $directories && result=$(echo $directories | sed 's/ /, /g') &&
          echo "dirs=[$result]" >> "$GITHUB_OUTPUT" && echo "[$result]" 
   # build:
   #   runs-on: ubuntu-latest
