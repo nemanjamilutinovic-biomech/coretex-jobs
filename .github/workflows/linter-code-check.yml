@@ -20,11 +20,10 @@ jobs:
       dirs: ${{ steps.dirs.outputs.dirs }}
     steps:
       - uses: actions/checkout@v3
-      - name: list directory
-        run: pwd && ls -la
       - name: Define Dirs
         id: dirs
-        run: echo 'dirs=["tasks/annotated-image-extractor"]' >> "$GITHUB_OUTPUT"
+        run: dirs=($(ls -d tasks/*/)) &&
+        echo "dirs=[$(printf '"%s", ' "${dirs[@]}")]" >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
     needs: define-dirs
