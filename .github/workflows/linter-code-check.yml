@@ -22,7 +22,7 @@ jobs:
       - name: Define Dirs
         id: dirs
         run: |
-          pwd &&
+          pwd && ls &&
           ls -d tasks/*/ >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
